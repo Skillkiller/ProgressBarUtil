@@ -1,15 +1,9 @@
 package de.skillkiller.v2;
 
-import lombok.AccessLevel;
-import lombok.Setter;
-
-public class Progressbar implements ProgressBarProgress {
+public class Progressbar extends ProgressBarProgress {
 
     private final static long MAX_VALUE = 100;
     private long currentValue = 0;
-
-    @Setter(AccessLevel.PACKAGE)
-    private StagedProgressbar partFrom;
 
     public void incrementByOne() {
         currentValue++;
