@@ -1,16 +1,22 @@
 package de.skillkiller.v2;
 
+import lombok.Setter;
+
 public class Progressbar extends ProgressBarProgress {
 
-    private final static long MAX_VALUE = 100;
+    @Setter
+    private long maxValue = 100;
     private long currentValue = 0;
 
     public void incrementByOne() {
+        if (currentValue + 1 > maxValue) return;
         currentValue++;
         if (partFrom != null) partFrom.reCalculate();
     }
 
     public void setValue(long value) {
+        if (currentValue > maxValue)
+            throw new RuntimeException("Cannot set value to " + value + " when max value is " + maxValue);
         this.currentValue = value;
         if (partFrom != null) partFrom.reCalculate();
     }
@@ -19,7 +25,11 @@ public class Progressbar extends ProgressBarProgress {
         return currentValue;
     }
 
+    public void finished() {
+        this.currentValue = maxValue;
+    }
+
     public float getProgress() {
-        return ((float) currentValue) / MAX_VALUE ;
+        return ((float) currentValue) / maxValue;
     }
 }
