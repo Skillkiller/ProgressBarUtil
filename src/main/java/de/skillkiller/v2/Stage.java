@@ -21,7 +21,6 @@ public class Stage {
     }
 
     public ProgressBarProgress getInterface() {
-        if (isStaged()) return this.stagedBar;
         return this.bar;
     }
 }
