@@ -19,6 +19,12 @@ public class StagedProgressbarBuilder {
         return this;
     }
 
+    public StagedProgressbarBuilder addStage(long weight, long totalAmount) {
+        Progressbar progressbar = new Progressbar(totalAmount);
+        bars.add(new Pair<>(weight, progressbar));
+        return this;
+    }
+
     public StagedProgressbarBuilder addStage(long weight, StagedProgressbar stagedProgressbar) {
         bars.add(new Pair<>(weight, stagedProgressbar));
         return this;

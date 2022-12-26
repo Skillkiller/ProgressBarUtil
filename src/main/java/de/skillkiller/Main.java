@@ -21,7 +21,7 @@ public class Main {
 
         progressbar.setValue(99);
         progressbar.finished();
-        progressbar.setMaxValue(100);
+        progressbar.setTotalAmount(100);
 
         System.out.println("progressbar = " + progressbar.getProgress());
     }

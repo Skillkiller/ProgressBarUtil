@@ -18,7 +18,6 @@ public class StagedProgressbar extends ProgressBarProgress {
     }
 
     public float getProgress() {
-        //Need test
         return (float) bars.stream().mapToDouble(value -> value.getKey() * value.getValue().getProgress()).sum() / bars.stream().mapToLong(Pair::getKey).sum();
     }
 
